@@ -1,0 +1,72 @@
+    <!-- bodySection -->
+		<div class="serviceBlock">
+		<div class="container">
+                <div class="row">
+					{% if data.materials %}
+                    {% for material in data.materials %}
+                    <div class="col-md-4">
+						<div class="clearfix">
+                            <a href="{% if material['count'] < 2 %}{{url('materialbrand',{slug:material['material'].getSlug})}}{% else %}{{url('submaterials',{slug:material['material'].getSlug})}}{% endif %}">
+                            <i class="fa">
+                            <img class="radius5" src="{{material['material'].getRelativeLinkToThumbnailImg('100')}}"/>
+                            </i>
+							<div class="desc">
+								<h4>{{material['material'].getTitle}}</h4>
+								<p></p>
+							</div>
+                            </a>
+						</div>
+                    
+					</div>
+                    {% endfor %}
+                    {% endif %}
+                    
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="clearfix">
+							<a href="{{url('gallery')}}">
+                            <i class="fa">
+                            <img class="radius5" src="{% for image in data.images %}{% if image.getTitle == 'photogal' %}{{image.getRelativeLinkToThumbnailImg('100')}}{% endif %}{% endfor %}"/>
+                            </i>
+							<div class="desc">
+								
+								<h4>Мы производим</h4>
+								<p></p>
+							</div>
+                            </a>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="clearfix">
+                            <a href="{{url('article2')}}">
+							<i class="fa">
+                            <img class="radius5" src="{% for image in data.images %}{% if image.getTitle == 'articles' %}{{image.getRelativeLinkToThumbnailImg('100')}}{% endif %}{% endfor %}"/>
+                            </i>
+							<div class="desc">
+								
+								<h4>Статьи</h4>
+								<p></p>
+							</div>
+                            </a>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="clearfix">
+                            <a href="{{url('order_form')}}">
+							<i class="fa">
+                            <img class="radius5" src="{% for image in data.images %}{% if image.getTitle == 'order' %}{{image.getRelativeLinkToThumbnailImg('100')}}{% endif %}{% endfor %}"/>
+                            </i>
+							<div class="desc">
+								
+								<h4>Оформить заявку</h4>
+								<p></p>
+							</div>
+                            </a>
+						</div>
+					</div>
+				</div>
+            </div>
+				<hr/>
+            </div>

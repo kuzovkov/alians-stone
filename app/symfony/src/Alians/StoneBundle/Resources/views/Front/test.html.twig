@@ -1,0 +1,6 @@
+<h3>{{data.material.getTitle}}</h3>
+Thumbnail: <img src="{{data.material.getRelativeLinkToThumbnailImg('100')}}"/>
+<p>{{data.material.getContent | raw}}</p>
+{% for image in data.images %}
+    <img src="{{image.getRelativeLinkToImg}}"/><br/>
+{% endfor %}

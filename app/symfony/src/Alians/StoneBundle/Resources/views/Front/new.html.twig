@@ -1,0 +1,51 @@
+{% extends '::base.front.html.twig' %}
+{% block title %}
+    {% if data.new %}
+        {{ data.new.getTitle }}
+    {% else %}
+        404 - Page not found
+    {% endif %}
+{% endblock %}
+
+{% block meta %}
+     {% if data.new %}
+        <meta name="keywords" content="{{data.new.getTitle}}"/>
+        <meta name="description" content="{{data.new.getTitle}}"/>
+    {% endif %}
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/front.style.css')}}" type="text/css" media="screen"/> 
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/magnific-popup/magnific-popup.css')}}" type="text/css" media="screen"/> 
+{% endblock %}
+{% block topjs %}
+    {{parent()}}
+    <script type="text/javascript" src="{{asset('bundles/aliansstone/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+   <div class="wrap">
+   {% if data.new %}
+        <table>
+        <tr>
+        <td><h1>{{data.new.getTitle}}</h1></td>
+        
+        <td><img class="radius5" src="{{data.new.getRelativeLinkToThumbnailImg('150')}}"/></td>
+        </tr>
+        </table>
+        
+        <div class="new-description">
+        {{data.new.getContent | raw}}
+        </div>
+        <a href="{{url('news')}}">Все новости >></a>
+   {% else %}
+        {% include 'AliansStoneBundle:Front:404.html.twig' %}
+   {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block customjs %}
+<script type="text/javascript">
+    
+</script>
+{% endblock %}

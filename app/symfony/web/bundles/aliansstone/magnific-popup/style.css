@@ -1,0 +1,26 @@
+.gallery
+{
+    margin: 10px 10px 10px 10px;
+}
+
+.gallery-wrap
+{
+    padding: 10px 10px 10px 10px;   
+}
+
+.bannerSection3 h3
+{
+    padding: 10px 10px  10px 15px;
+    color: #EC9F2E;
+}
+
+.bannerSection2 h3
+{
+    padding: 10px 10px  10px 15px;
+    color: #EC9F2E;
+}
+
+.bannerSection3
+{
+    background-color: #fff;
+}

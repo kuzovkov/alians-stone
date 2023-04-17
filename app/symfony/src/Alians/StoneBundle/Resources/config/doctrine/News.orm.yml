@@ -1,0 +1,32 @@
+Alians\StoneBundle\Entity\News:
+    type: entity
+    table: news
+    repositoryClass: Alians\StoneBundle\Entity\NewsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: '255'
+            nullable: true
+        content:
+            type: text
+            nullable: true
+        img:
+            type: string
+            length: '255'
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: true
+        updated_at:
+            type: datetime
+            nullable: true
+        
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue, uploadImage ]
+        preUpdate: [ setUpdatedAtValue, uploadImage ]

@@ -1,0 +1,96 @@
+{% extends '::base.front.html.twig' %}
+{% block title %}
+    {% if data.product %}
+        {{ data.product.getTitle }}
+    {% else %}
+        404 - Page not found
+    {% endif %}
+{% endblock %}
+
+{% block meta %}
+     {% if data.product %}
+        <meta name="keywords" content="{{data.product.getTitle}}"/>
+        <meta name="description" content="{{data.product.getTitle}}"/>
+    {% endif %}
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/front.style.css')}}" type="text/css" media="screen"/> 
+    
+{% endblock %}
+{% block topjs %}
+    {{parent()}}
+    
+{% endblock %}
+
+{% block content %}
+   <div class="wrap">
+   {% if data.product %}
+        <table>
+        <tr>
+        <td><h1>{{data.product.getTitle}}</h1></td>
+        
+        <td><img class="radius5" src="{{data.product.getRelativeLinkToThumbnailImg('150')}}"/></td>
+        </tr>
+        </table>
+        <div class="product-sample">
+        
+        {% if data.images1 %}
+        <h3>{{data.product.getText1}}</h3>
+            <div class="gallery">
+            {% for image in data.images1 %}
+                <a href="{{image.getRelativeLinkToImg}}"><img class="radius5" src="{{image.getRelativeLinkToThumbnailImg('100')}}"/></a>
+            {% endfor %}
+            </div>
+        {% endif %}
+        </div>
+        
+        <div class="product-sample">
+        
+        {% if data.images2 %}
+        <h3>{{data.product.getText2}}</h3>
+            <div class="gallery">
+            {% for image in data.images2 %}
+                <a href="{{image.getRelativeLinkToImg}}"><img class="radius5" src="{{image.getRelativeLinkToThumbnailImg('100')}}"/></a>
+            {% endfor %}
+            </div>
+        {% endif %}
+        </div>
+        <div class="product-sample">
+        
+        {% if data.images3 %}
+        <h3>{{data.product.getText3}}</h3>
+        <div class="gallery">
+            {% for image in data.images3 %}
+                <a href="{{image.getRelativeLinkToImg}}"><img class="radius5" src="{{image.getRelativeLinkToThumbnailImg('100')}}"/></a>
+            {% endfor %}
+            </div>
+        {% endif %}
+        </div>
+        <div class="product-description">
+        {{data.product.getContent | raw}}
+        </div>
+        <a href="{{url('products')}}">Все продукты >></a>
+   {% else %}
+        {% include 'AliansStoneBundle:Front:404.html.twig' %}
+   {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block customjs %}
+<script type="text/javascript">
+    
+    /******************/
+    /* magnific-popup */
+    /******************/
+    $('.gallery').each(function() { // the containers for all your galleries
+    $(this).magnificPopup({
+        delegate: 'a', // the selector for gallery item
+        type: 'image',
+        gallery: {
+          enabled:true
+        }
+    });
+}); 
+</script>
+{% endblock %}

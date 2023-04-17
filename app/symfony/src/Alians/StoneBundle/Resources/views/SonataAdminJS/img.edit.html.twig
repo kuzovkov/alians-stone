@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    
+    /************/
+    /*show image*/
+    /************/ 
+    {% if object.getId %}
+    
+        {% if object.getRelativeLinkToImg is defined %}
+        //show slider
+            {% if object.getRelativeLinkToImg %}
+            if ( $('input').is('#{{admin.uniqid}}_img') )
+            {
+                
+                var img = $('#{{admin.uniqid}}_img');
+                var imageHtml = '<p>&nbsp;</p><p><img src="{{object.getRelativeLinkToImg}}" /></p>';
+                img.after(imageHtml);
+            }
+            {% endif %}
+        //end show slider
+        
+        {% endif %}
+    {% endif %}
+
+</script>

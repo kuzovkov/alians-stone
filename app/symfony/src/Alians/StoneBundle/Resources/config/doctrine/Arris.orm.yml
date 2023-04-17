@@ -1,0 +1,53 @@
+Alians\StoneBundle\Entity\Arris:
+    type: entity
+    table: arris
+    repositoryClass: Alians\StoneBundle\Entity\ArrisRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: '255'
+            nullable: true
+        content:
+            type: text
+            nullable: true
+        gallery1:
+            type: string
+            length: '255'
+            nullable: true
+        gallery2:
+            type: string
+            length: '255'
+            nullable: true
+        gallery3:
+            type: string
+            length: '255'
+            nullable: true
+        text1:
+            type: text
+            nullable: true
+        text2:
+            type: text
+            nullable: true
+        text3:
+            type: text
+            nullable: true
+        img:
+            type: string
+            length: '255'
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: true
+        updated_at:
+            type: datetime
+            nullable: true
+        
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue, uploadImage ]
+        preUpdate: [ setUpdatedAtValue, uploadImage ]

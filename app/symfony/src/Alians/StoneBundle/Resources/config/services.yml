@@ -1,0 +1,160 @@
+parameters:
+#    alians_stone.example.class: Alians\StoneBundle\Example
+
+services:
+#    alians_stone.example:
+#        class: %alians_stone.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    alians.stone.admin.user:
+        class: Alians\StoneBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Доступ, label: Пользователи }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\User
+            - 'AliansStoneBundle:UserAdmin'
+            
+    alians.stone.admin.article:
+        class: Alians\StoneBundle\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Контент, label: Статьи }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Article
+            - 'AliansStoneBundle:ArticleAdmin'
+            
+    alians.stone.admin.news:
+        class: Alians\StoneBundle\Admin\NewsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Контент, label: Новости }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\News
+            - 'AliansStoneBundle:NewsAdmin'
+            
+    alians.stone.admin.project:
+        class: Alians\StoneBundle\Admin\ProjectAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Услуги, label: Проекты }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Project
+            - 'AliansStoneBundle:ProjectAdmin'
+            
+    alians.stone.admin.partner:
+        class: Alians\StoneBundle\Admin\PartnerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Контент, label: Партнеры }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Partner
+            - 'AliansStoneBundle:PartnerAdmin'
+            
+    alians.stone.admin.slide:
+        class: Alians\StoneBundle\Admin\SlideAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Контент, label: Слайды }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Slide
+            - 'AliansStoneBundle:SlideAdmin'
+            
+    alians.stone.admin.image:
+        class: Alians\StoneBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Контент, label: Изображения }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Image
+            - 'AliansStoneBundle:ImageAdmin'
+            
+    alians.stone.admin.product:
+        class: Alians\StoneBundle\Admin\ProductAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Услуги, label: Продукты }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Product
+            - 'AliansStoneBundle:ProductAdmin'
+            
+    alians.stone.admin.material:
+        class: Alians\StoneBundle\Admin\MaterialAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Услуги, label: Материалы }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Material
+            - 'AliansStoneBundle:MaterialAdmin'
+            
+    alians.stone.admin.page:
+        class: Alians\StoneBundle\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Контент, label: Страницы }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Page
+            - 'AliansStoneBundle:PageAdmin'
+            
+    alians.stone.admin.setting:
+        class: Alians\StoneBundle\Admin\SettingAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Настройки, label: Настройки сайта }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Setting
+            - 'AliansStoneBundle:SettingAdmin'
+            
+    alians.stone.admin.arris:
+        class: Alians\StoneBundle\Admin\ArrisAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Услуги, label: Кромки }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Arris
+            - 'AliansStoneBundle:ArrisAdmin'
+            
+    alians.stone.admin.brand:
+        class: Alians\StoneBundle\Admin\BrandAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Контент, label: Производители }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Brand
+            - 'AliansStoneBundle:BrandAdmin'
+            
+    alians.stone.admin.message:
+        class: Alians\StoneBundle\Admin\MessageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Контент, label: Сообщения }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Message
+            - 'AliansStoneBundle:MessageAdmin'
+            
+    alians.stone.admin.gallery:
+        class: Alians\StoneBundle\Admin\GalleryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Контент, label: Галереи }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Gallery
+            - 'AliansStoneBundle:GalleryAdmin'
+            
+    alians.stone.admin.order:
+        class: Alians\StoneBundle\Admin\OrderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Услуги, label: Заявки }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Order
+            - 'AliansStoneBundle:OrderAdmin'
+            
+    alians.stone.admin.sonet:
+        class: Alians\StoneBundle\Admin\SonetAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Настройки, label: Социальные сети }
+        arguments:
+            - ~
+            - Alians\StoneBundle\Entity\Sonet
+            - 'AliansStoneBundle:SonetAdmin'

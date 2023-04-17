@@ -1,0 +1,42 @@
+{% extends '::base.front.html.twig' %}
+{% block title %}
+    {% if data.article %}
+        {{ data.article.getHtmlTitle }}
+    {% else %}
+        404 - Page not found
+    {% endif %}
+{% endblock %}
+
+{% block meta %}
+     {% if data.article %}
+        <meta name="keywords" content="{{data.article.getMetaKeywords}}"/>
+        <meta name="description" content="{{data.article.getMetaDescription}}"/>
+    {% endif %}
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/front.style.css')}}" type="text/css" media="screen"/>  
+{% endblock %}
+
+{% block content %}
+   <div class="wrap">
+   {% if data.article %}
+        <table>
+        <tr>
+        <td><h1>{{data.article.getTitle}}</h1></td>
+        <td><img class="radius5" src="{{data.article.getRelativeLinkToThumbnailImg('150')}}"/></td>
+        </tr>
+        </table>
+        {{data.article.getContent | raw}}
+        <p><a href="{{url('article2')}}">Все статьи >></a></p>
+   {% else %}
+        {% include 'AliansStoneBundle:Front:404.html.twig' %}
+   {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block customjs %}
+<script type="text/javascript">
+    
+</script>
+{% endblock %}

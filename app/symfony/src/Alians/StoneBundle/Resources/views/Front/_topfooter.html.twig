@@ -1,0 +1,134 @@
+<!-- footerTopSection -->
+    <div class="footerTopSection">
+		<div class="container">
+			<div class="row">
+			  <div class="col-md-3">
+				<h3>О нас </h3>
+				{% if data.settings['about_footer'] is defined %}
+                {{ data.settings['about_footer'] | raw }}
+                {% endif %}
+				
+				<h3>Подпишитесь на новости</h3>
+				<p>Если Вы хотите получать ежемесячно новости и предложения от нас</p>
+                <div style="color: #ff4800" id="sub-res"></div>
+				<div>
+					
+					  <div class="form-group">
+						<label class="sr-only" for="exampleInputEmail2">Ваше имя</label>
+						<input type="text" class="form-control" id="sub-name" placeholder="Введите Ваше имя" value=""/>
+  
+                         <label class="sr-only" for="exampleInputEmail2">Email address</label>
+						<input type="email" class="form-control" id="sub-email" placeholder="Введите email" value=""/>
+					         
+                      </div>
+					  <button id="sub-btn" type="submit" class="btn btn-brand">Подписаться</button>
+					
+				</div>
+                <div>
+                {#
+                {% if data.session is defined %}
+                {% for item in data.session %}
+                    {{item}}
+                {% endfor%}
+                {% endif %}
+                #}
+                </div>
+				
+			  </div>
+			  <div class="col-md-3">
+				<h3>Последние новости </h3>
+   	            {% if data.newss %}
+                {% for news in data.newss %}
+                <p>
+					<strong><a href="{{url('new',{id:news.getId})}}">{{news.getTitle}}</a></strong><br>
+                    <div id="short_{{news.getId}}" class="short">{{news.getContent |striptags  | slice(0,100)| raw }}</div>
+                    <div id="full_{{news.getId}}" class="full">{{news.getContent | striptags | raw}}</div>
+                    <div id="{{news.getId}}" class="in-more"><a>подробнее</a></div>
+				</p>
+                {% endfor %}
+                {% endif %}
+				
+			  </div>
+			  <div class="col-md-3">
+				<h3>Полезные ссылки</h3>
+				<p>
+					
+					{#<a href="{{url('arris2')}}">Наши услуги</a><br>#}
+					<a href="{{url('about')}}">О нас</a><br>
+					<a href="{{url('contact')}}">Контакты</a><br>
+					<a href="{{url('products')}}">Наши продукты</a><br>
+                    <a href="{{url('news')}}">Новости</a><br>
+                    <a href="{{url('article2')}}">Статьи</a><br>
+				</p>
+				{#
+                <h3>Friends</h3>
+				<p>
+					<a href="http://yahoo.com">Yahoo.com</a><br>
+					<a href="http://canon.com">Canon</a>
+				</p>
+				#}
+			  </div>
+			  <div class="col-md-3">
+				<h3>Контакты для связи</h3>
+				<p>
+					<strong>Москва</strong><br>
+					
+					Центральный офис : {% if data.settings['tel_central_office'] is defined %}{{data.settings['tel_central_office']}}{% endif %}<br>
+					Отдел расчетов заказов : {% if data.settings['tel_otdel_rachetov'] is defined %}{{data.settings['tel_otdel_rachetov']}}{% endif %}<br>
+					
+				</p>
+				<h3>Оставайтесь на связи</h3>
+				<p>
+					Мы доступны в социальных сетях
+				</p>
+					{% if data.sonet %}
+                    {% for item in data.sonet %}
+                    <p><a href="{{item.getLink}}"><img height="20" src="{{item.getRelativeLinkToImg}}"/></a></p>
+			         {% endfor %}
+                     {%  endif %}
+              </div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+function hideFull()
+{
+    $('div.full').hide();
+}
+
+function showShort()
+{
+    $('div.short').show();
+}
+
+hideFull(); 
+
+function more( id, elem )
+{
+    //hideFull(); 
+    //showShort();
+    if ( elem.html() == '<a>подробнее</a>')
+                                {
+                                     
+                                    $('#short_'+id).hide();
+                                    $('#full_'+id).fadeIn(1000);
+                                    elem.html('<a>свернуть</a>'); 
+                                }
+                                else
+                                {
+                                    $('#full_'+id).hide();
+                                    $('#short_'+id).fadeIn(1000);
+                                    elem.html('<a>подробнее</a>'); 
+                                    
+                                }
+    
+}
+
+$('.in-more').click(function(){ 
+                                
+                                var id=this.id;
+                                var elem = $(this);
+                                more(id,elem);  
+                            }
+                      );
+</script>

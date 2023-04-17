@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    
+    /************/
+    /*show image*/
+    /************/ 
+    {% if object.getId %}
+    
+        {% if object.getRelativeLinkToImg is defined %}
+        //show slider
+            {% if object.getRelativeLinkToImg %}
+            if ( $('table').is('.table') )
+            {
+                
+                var table = $('.table');
+                var imageHtml = '<p>&nbsp;</p><p><img src="{{object.getRelativeLinkToImg}}" /></p>';
+                table.after(imageHtml);
+            }
+            {% endif %}
+        //end show slider
+        
+        {% endif %}
+    {% endif %}
+
+</script>

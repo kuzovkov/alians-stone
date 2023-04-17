@@ -1,0 +1,15 @@
+<!-- clientSection -->
+	<div class="container">
+		<h3 class="title">Наши партнеры</h3>
+		<div class="clientSection">
+			<div class="row">					
+					{% if data.partners %}
+                    {% for partner in data.partners %}
+                    <div class="col-md-2">
+						<a href="{{partner.getLogoUrl}}"><img alt="{{partner.getName}}" src="{{partner.getRelativeLinkToImg}}"></a>
+					</div>
+                    {% endfor %}
+                    {% endif %}
+				</div>
+		</div>
+	 </div>

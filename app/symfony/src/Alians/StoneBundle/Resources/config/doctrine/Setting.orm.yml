@@ -1,0 +1,31 @@
+Alians\StoneBundle\Entity\Setting:
+    type: entity
+    table: setting
+    repositoryClass: Alians\StoneBundle\Entity\SettingRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '255'
+            nullable: true
+        value:
+            type: text
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: true
+        updated_at:
+            type: datetime
+            nullable: true
+        
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue ]
+        preUpdate: [ setUpdatedAtValue ]

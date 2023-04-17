@@ -1,0 +1,157 @@
+
+
+.wrap
+{
+    width: 90%;
+    margin: 20px auto 10px auto;
+    text-align: justify;
+}
+
+.wrap-order
+{
+    width: 400px;
+    margin: 20px auto 10px auto;
+    text-align: justify;
+}
+
+.yandex-map
+{
+    width: 620px;
+    margin: 40px auto 40px auto;
+}
+
+.page-404
+{
+    width: 30%;
+    margin: 50px auto 50px auto;
+    padding: 50px;
+    border: double #450000 3px;
+    font-size: 20px;
+    color: #450000;
+    font-family: Verdana;
+}
+
+
+#wrap-backcall 
+{ 
+    background: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    /*opacity: 0.95;*/
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+}
+
+#form-backcall
+{
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    margin-left: -200px;
+    width: 400px;
+    height: 400px;
+    position: fixed;
+    background-color: #ccc;
+    opacity: 1.0;
+    border-radius: 10px;
+}
+
+#form-backcall p.header
+{
+    height: 40px;
+    width: 100%;
+    background-color: #999;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    vertical-align: central;
+    border-radius: 10px 10px 0 0;
+}
+
+#form-backcall p.header a
+{
+    color: #fff;
+    padding: 6px 5px 0 0;
+    float: right;
+    font-size: 12px;
+}
+
+.radius5
+{
+    border-radius: 5px;
+}
+
+.radius10
+{
+    border-radius: 10px;
+}
+
+.radius15
+{
+    border-radius: 15px;
+}
+
+.red-border
+{
+    border: 1px solid red;
+}
+.material-preview
+{
+    margin: 5px 5px 5px 5px;
+    display: inline;
+    float: left;
+    text-align: center;
+    height: 180px;
+    
+}
+
+.material-preview-title
+{
+    color: #ccc;
+    font-size: 12px;
+    text-decoration: none;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.no-decoration:hover
+{
+    text-decoration: none;
+}
+ 
+.material-preview-title:hover
+{
+    text-decoration: none;
+    color: #7c8082;
+}
+
+.clear
+{
+    clear: both;
+}
+
+textarea.form-control
+{
+    resize: none;
+}
+
+.counter-info
+{
+    float: left;
+    /*width: 150px;*/    
+}
+
+.counter-info p
+{
+    float: left;
+    margin-right: 5px;
+}
+
+
+

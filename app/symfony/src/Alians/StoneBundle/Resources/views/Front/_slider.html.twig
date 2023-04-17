@@ -1,0 +1,25 @@
+<!-- bannerSection -->
+    <div class="bannerSection">
+		<div class="slider-inner">
+			<div id="da-slider" class="da-slider">
+				{% if data.slides %}
+                {% for slide in data.slides %}
+                {% if slide.getCategory == 0 %}
+                <div class="da-slide">
+					<h2><i>{{slide.getTitle}}</i></h2>
+					{% if slide.getContent %}
+                    <p><i>{{slide.getContent}}</i></p>
+                    {% endif %}
+					<div class="da-img"><img  class="radius5" height="100%" src="{{slide.getRelativeLinkToImg}}" alt="" /></div>
+				</div>
+				{% endif %}
+                {% endfor %}
+                {% endif %}
+				<nav class="da-arrows">
+					<span class="da-arrows-prev"></span>
+					<span class="da-arrows-next"></span>		
+				</nav>
+			</div><!--/da-slider-->
+		</div><!--/slider-->
+     </div>
+		<!--=== End Slider ===-->

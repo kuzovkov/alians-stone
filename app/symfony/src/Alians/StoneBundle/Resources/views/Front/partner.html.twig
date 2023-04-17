@@ -1,0 +1,87 @@
+{% extends '::base.front.html.twig' %}
+{% block title %}
+    {% if data.partner %}
+        {{ data.partner.getName }}
+    {% else %}
+        404 - Page not found
+    {% endif %}
+{% endblock %}
+
+{% block meta %}
+     {% if data.partner %}
+        <meta name="keywords" content="{{data.partner.getName}}"/>
+        <meta name="description" content="{{data.partner.getName}}"/>
+    {% endif %}
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/front.style.css')}}" type="text/css" media="screen"/> 
+{% endblock %}
+
+{% block content %}
+   <div class="wrap">
+   {% if data.partner %}
+        <table>
+        <tr>
+        <td><h1>{{data.partner.getName}}</h1></td>
+        
+        <td><img src="{{data.partner.getRelativeLinkToThumbnailImg('150')}}"/></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                {{data.partner.getDescription | raw}}
+            </td>
+        </tr>
+        </table>
+        {#
+        <div class="material-sample">
+        
+        {% if data.images1 %}
+        <h3>Галерея</h3>
+            {% for image in data.images1 %}
+                <a id="single_1" href="{{image.getRelativeLinkToImg}}"><img src="{{image.getRelativeLinkToThumbnailImg('100')}}"/></a>
+            {% endfor %}
+        {% endif %}
+        </div>
+        
+        <div class="material-sample">
+        
+        {% if data.images2 %}
+        <h3>Галерея</h3>
+            {% for image in data.images2 %}
+                <img src="{{image.getRelativeLinkToThumbnailImg('100')}}"/>
+            {% endfor %}
+        {% endif %}
+        </div>
+        <div class="material-sample">
+        
+        {% if data.images3 %}
+        <h3>Галерея</h3>
+            {% for image in data.images3 %}
+                <img src="{{image.getRelativeLinkToThumbnailImg('100')}}"/>
+            {% endfor %}
+        {% endif %}
+        </div>
+        <div class="material-description">
+        
+        </div>
+        #}
+   {% else %}
+        {% include 'AliansStoneBundle:Front:404.html.twig' %}
+   {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block customjs %}
+<script type="text/javascript">
+    
+    //fancybox
+    $("#single_1").fancybox({
+              helpers: {
+                  title : {
+                      type : 'float'
+                  }
+              }
+          });
+</script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends '::base.front.html.twig' %}
+{% block title %}
+    {% if data.partners %}
+        Наши партнеры
+    {% else %}
+        404 - Page not found
+    {% endif %}
+{% endblock %}
+
+{% block meta %}
+     {% if data.partners %}
+        <meta name="keywords" content="Натуральный и искусственный камень"/>
+        <meta name="description" content="Натуральный и искусственный камень"/>
+    {% endif %}
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/front.style.css')}}" type="text/css" media="screen"/> 
+{% endblock %}
+
+{% block content %}
+    <hr />
+   <div class="wrap">
+   {% if data.partners %}
+        <h1>Наши партнеры</h1>
+        <table>
+        {% for partner in data.partners %}
+            <tr>
+            <td colspan="2">
+                <a href="{{url('partner',{id:partner.getId})}}"><h2>{{partner.getName}}</h2></a>
+            </td>
+            </tr>
+            <tr>
+                <td><a id="single_1" href="{{partner.getRelativeLinkToImg}}"><img src="{{partner.getRelativeLinkToThumbnailImg('150')}}"/></a></td>
+                <td>{{partner.getDescription | slice (0,200)| raw | striptags | replace({'&nbsp;':' '})}}...
+                    <p><a href="{{url('partner',{id:partner.getId})}}">Подробнее</a></p>
+                </td>
+            </tr>
+        {% endfor %}
+        
+        </table>
+   {% else %}
+        {% include 'AliansStoneBundle:Front:404.html.twig' %}
+   {% endif %}
+    </div>
+{% endblock %}
+{% block partners %}{% endblock %}
+
+{% block customjs %}
+<script type="text/javascript">
+    var nav = document.getElementById('partners');
+    nav.className = "active";
+    
+    //fancybox
+    $("#single_1").fancybox({
+              helpers: {
+                  title : {
+                      type : 'float'
+                  }
+              }
+          });
+</script>
+{% endblock %}

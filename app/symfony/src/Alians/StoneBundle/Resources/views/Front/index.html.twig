@@ -1,0 +1,42 @@
+{% extends '::base.front.html.twig' %}
+
+         {% block meta %}<meta name="author" content=""/>{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/front.style.css')}}" type="text/css" media="screen"/>  
+        {% endblock %}
+        
+        {% block slider %}
+            {% include "AliansStoneBundle:Front:_slider.html.twig" %}
+        {% endblock %}
+        
+        {% block content %}
+        
+        
+        {% endblock %}
+        
+        {% block menu %}
+            {% include "AliansStoneBundle:Front:_menu.html.twig" %}
+        {% endblock %}
+        {% block materials %}
+            {# include "AliansStoneBundle:Front:_materials.html.twig" #}
+        {% endblock %}
+        
+        {% block epigraph %}
+            {% include "AliansStoneBundle:Front:_epigraph.html.twig" %}
+        {% endblock %}
+        {% block projects %}
+            {% include "AliansStoneBundle:Front:_projects.html.twig" %}
+        {% endblock %}
+    
+{% block customjs %}
+<script type="text/javascript">
+    var nav = document.getElementById('home');
+    nav.className = "active";
+    
+     jQuery(document).ready(function() {
+                  	App.init();
+                    App.initSliders();
+                    Index.initParallaxSlider();
+                    });
+</script>
+{% endblock %}

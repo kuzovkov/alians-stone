@@ -1,0 +1,39 @@
+Alians\StoneBundle\Entity\Message:
+    type: entity
+    table: message
+    repositoryClass: Alians\StoneBundle\Entity\MessageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '255'
+            nullable: true
+        phone:
+            type: string
+            length: '255'
+            nullable: true
+        message:
+            type: text
+            nullable: true
+        type:
+            type: string
+            length: '255'
+            nullable: true
+        answer:
+            type: boolean
+            nullable: true 
+        created_at:
+            type: datetime
+            nullable: true
+        updated_at:
+            type: datetime
+            nullable: true
+        
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue ]
+        preUpdate: [ setUpdatedAtValue ]

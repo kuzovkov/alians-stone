@@ -1,0 +1,16 @@
+<div class="services">
+			<div class="container">
+				<div class="row">
+					{% if data.materials %}
+                    {% for material in data.materials %}
+                    <div class="col-md-3">
+								<a href="{{url('material',{id:material.getId})}}"><img src="{{material.getRelativeLinkToImg}}" class="" title="{{material.getTitle}}"></a>			
+								<h3><a class="hover-effect" href="{{url('material',{id:material.getId})}}">{{material.getTitle}}</a></h3>
+							<p>{{material.getContent | slice(0,200)|raw}}...</p>
+					 </div>
+                     {% endfor %}
+                     {% endif %}
+
+				 </div>	
+			</div>
+		</div>

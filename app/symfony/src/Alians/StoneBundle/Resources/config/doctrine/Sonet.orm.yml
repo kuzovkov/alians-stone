@@ -1,0 +1,33 @@
+Alians\StoneBundle\Entity\Sonet:
+    type: entity
+    table: sonet
+    repositoryClass: Alians\StoneBundle\Entity\SonetRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: '255'
+            nullable: true
+        link:
+            type: string
+            length: '255'
+            nullable: true
+        img:
+            type: string
+            length: '255'
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: true
+        updated_at:
+            type: datetime
+            nullable: true
+        
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue, uploadImage ]
+        preUpdate: [ setUpdatedAtValue, uploadImage ]

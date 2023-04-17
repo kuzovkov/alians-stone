@@ -1,0 +1,126 @@
+login:
+    pattern:   /login
+    defaults:  { _controller: AliansStoneBundle:Login:login }
+
+login_check:
+    pattern:   /login_check
+    
+logout:
+    pattern: /logout
+    
+home_page:
+    pattern:  /
+    defaults: { _controller: AliansStoneBundle:Front:index }
+    
+about:
+    pattern:  /about
+    defaults: { _controller: AliansStoneBundle:Front:about }
+    
+contact:
+    pattern:  /contact
+    defaults: { _controller: AliansStoneBundle:Front:contact }
+    
+material:
+    pattern:  /material/{slug}
+    defaults: { _controller: AliansStoneBundle:Front:material,slug:null }
+    
+material2:
+    pattern:  /material/
+    defaults: { _controller: AliansStoneBundle:Front:materials }
+    
+submaterials:
+    pattern:  /submaterial/{slug}
+    defaults: { _controller: AliansStoneBundle:Front:submaterials,slug:null }
+ 
+materialbrand:
+    pattern:  /materialbrand/{slug}
+    defaults: { _controller: AliansStoneBundle:Front:materialbrand,slug:null }
+   
+brand:
+    pattern:  /brand/{slug}
+    defaults: { _controller: AliansStoneBundle:Front:brand,slug:null }
+    
+brands:
+    pattern:  /brands/
+    defaults: { _controller: AliansStoneBundle:Front:brands}
+
+product:
+    pattern:  /product/{id}
+    defaults: { _controller: AliansStoneBundle:Front:product,id:0 }
+    
+products:
+    pattern:  /product/
+    defaults: { _controller: AliansStoneBundle:Front:products }
+    
+arris:
+    pattern:  /arris/{id}
+    defaults: { _controller: AliansStoneBundle:Front:arris,id:0 }
+
+arris2:
+    pattern:  /arris/
+    defaults: { _controller: AliansStoneBundle:Front:arrises }
+    
+page:
+    pattern: /page/{slug}
+    defaults: { _controller: AliansStoneBundle:Front:page,page:null }
+    
+page2:
+    pattern: /page/
+    defaults: { _controller: AliansStoneBundle:Front:page}
+    
+article:
+    pattern: /article/{slug}
+    defaults: { _controller: AliansStoneBundle:Front:article,slug:null }
+
+article2:
+    pattern: /article/
+    defaults: { _controller: AliansStoneBundle:Front:articles }
+
+new:
+    pattern: /new/{id}
+    defaults: { _controller: AliansStoneBundle:Front:new,id:0 }
+
+news:
+    pattern: /new/
+    defaults: { _controller: AliansStoneBundle:Front:news }
+
+project:
+    pattern: /project/{id}
+    defaults: { _controller: AliansStoneBundle:Front:project,id:0 }
+
+order_form:
+    pattern: /orderform
+    defaults: { _controller: AliansStoneBundle:Front:orderform }
+    
+order:
+    pattern: /order
+    defaults: { _controller: AliansStoneBundle:Front:order }  
+      
+gallery:
+    pattern: /gallery
+    defaults: { _controller: AliansStoneBundle:Front:gallery }
+    
+partners:
+    pattern: /partners
+    defaults: { _controller: AliansStoneBundle:Front:partners }
+    
+partner:
+    pattern: /partner/{id}
+    defaults: { _controller: AliansStoneBundle:Front:partner,id:0 }
+
+backcall:
+    pattern: /backcall
+    defaults: { _controller: AliansStoneBundle:Front:backcall }
+
+subscribe:
+    pattern: /subscribe
+    defaults: { _controller: AliansStoneBundle:Ajax:subscribe }
+
+test:
+    pattern: /test/{id}
+    defaults: { _controller: AliansStoneBundle:Front:test,id:null }
+    
+alians_stone_admin_getimagelist:
+    pattern: /admin/getimagelist
+    defaults: { _controller: AliansStoneBundle:Sonata:getImageList }
+    

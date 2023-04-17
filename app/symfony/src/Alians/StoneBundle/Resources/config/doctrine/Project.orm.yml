@@ -1,0 +1,44 @@
+Alians\StoneBundle\Entity\Project:
+    type: entity
+    table: project
+    repositoryClass: Alians\StoneBundle\Entity\ProjectRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: '255'
+            nullable: true
+        content:
+            type: text
+            nullable: true
+        img:
+            type: string
+            length: '255'
+            nullable: true
+        gallery1:
+            type: string
+            length: '255'
+            nullable: true
+        gallery2:
+            type: string
+            length: '255'
+            nullable: true
+        gallery3:
+            type: string
+            length: '255'
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: true
+        updated_at:
+            type: datetime
+            nullable: true
+        
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue, uploadImage ]
+        preUpdate: [ setUpdatedAtValue, uploadImage ]

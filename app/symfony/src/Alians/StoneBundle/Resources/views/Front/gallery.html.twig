@@ -1,0 +1,116 @@
+{% extends '::base.front.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/front.style.css')}}" type="text/css" media="screen"/>  
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/owl.carousel/assets/owl.carousel.css')}}" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/nivo-slider/themes/default/default.css')}}" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/nivo-slider/themes/bar/bar.css')}}" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/nivo-slider/themes/dark/dark.css')}}" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/nivo-slider/themes/light/light.css')}}" type="text/css" media="screen"/>
+    {#<link rel="stylesheet" href="{{asset('bundles/aliansstone/nivo-slider/nivo-slider.css')}}" type="text/css" media="screen"/>#}
+    {#<link rel="stylesheet" href="{{asset('bundles/aliansstone/nivo-slider/style.css')}}" type="text/css" media="screen"/>#}
+    
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/jquery-ui.css')}}" type="text/css" media="screen"/>
+{% endblock %}
+{% block topjs %}
+    {{parent()}}
+    <script type="text/javascript" src="{{asset('bundles/aliansstone/nivo-slider/jquery-1.9.0.min.js')}}"></script>
+    {#<script type="text/javascript" src="{{asset('bundles/aliansstone/nivo-slider/jquery.nivo.slider.js')}}"></script>#}
+    {#<script type="text/javascript" src="{{asset('bundles/aliansstone/nivo-slider/jquery.nivo.slider.pack.js')}}"></script>#}
+    <script type="text/javascript" src="{{asset('bundles/aliansstone/js/jquery-ui.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/aliansstone/js/fancybox/jquery.fancybox.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/aliansstone/js/fancybox/jquery.fancybox.pack.js')}}"></script>
+    
+{% endblock %}
+
+{% block content %}
+    <hr />
+    <div class="wrap">
+        
+        {% if data.products %}
+        {% if data.slides %}
+        {% for product in data.products %}
+        
+        <div class="bannerSection3">
+        <h3>{{product.getTitle}}</h3>
+            <div class="gallery-wrap">
+                <div class="gallery">
+    				{% if data.slides %}
+                    {% for slide in data.slides %}
+                    {% if slide.getCategory == product.getId %}
+
+    					<a href="{{slide.getRelativeLinkToImg}}"><img class="radius5" src="{{slide.getRelativeLinkToThumbnailImg('100')}}" alt="" /></a>
+                   
+    				{% endif %}
+                    {% endfor %}
+                    {% endif %}
+				
+                </div>
+	
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endif %}
+        
+     </div>   
+    <hr />
+{% endblock %}
+
+
+{% block customjs %}
+
+<script type="text/javascript">
+    
+    var nav = document.getElementById('contact');
+    nav.className = "active";
+    
+    
+    /*
+    //Nivo-Slider
+    var options = {
+            effect: 'random',               // Specify sets like: 'fold,fade,sliceDown'
+            slices: 15,                     // For slice animations
+            boxCols: 8,                     // For box animations
+            boxRows: 4,                     // For box animations
+            animSpeed: 500,                 // Slide transition speed
+            pauseTime: 3000,                // How long each slide will show
+            startSlide: 0,                  // Set starting Slide (0 index)
+            directionNav: true,             // Next & Prev navigation
+            controlNav: true,               // 1,2,3... navigation
+            controlNavThumbs: false,        // Use thumbnails for Control Nav
+            pauseOnHover: true,             // Stop animation while hovering
+            manualAdvance: false,           // Force manual transitions
+            prevText: 'Prev',               // Prev directionNav text
+            nextText: 'Next',               // Next directionNav text
+            randomStart: false,             // Start on a random slide
+            beforeChange: function(){},     // Triggers before a slide transition
+            afterChange: function(){},      // Triggers after a slide transition
+            slideshowEnd: function(){},     // Triggers after all slides have been shown
+            lastSlide: function(){},        // Triggers when last slide is shown
+            afterLoad: function(){}         // Triggers when slider has loaded
+    };
+    
+    $(window).load(function() {
+        $('#slider1').nivoSlider(options);
+		$('#slider2').nivoSlider(options);
+		$('#slider3').nivoSlider(options);
+        $('#slider4').nivoSlider(options);
+        $('#slider5').nivoSlider(options);
+    });
+    
+    */
+    
+    /******************/
+    /* magnific-popup */
+    /******************/
+    $('.gallery').each(function() { // the containers for all your galleries
+    $(this).magnificPopup({
+        delegate: 'a', // the selector for gallery item
+        type: 'image',
+        gallery: {
+          enabled:true
+        }
+    });
+}); 
+</script>
+{% endblock %}

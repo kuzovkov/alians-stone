@@ -1,0 +1,34 @@
+<div class="container">
+		<div class="row">
+			<div class="col-md-4"> 
+				<h3 class="title">Причины выбрать нас </h3>
+				
+                {% if data.settings['reasons'] is defined %}{{data.settings['reasons'] | raw}}{% endif %}
+			</div>
+			<div class="col-md-8">
+			
+            <div class="projectList">
+				<h3 class="title">Последние проекты</h3>
+				{% if data.projects %}
+                {% for project in data.projects %}
+                <div class="media">
+				  <a class="pull-left" href="{{url('project',{id:project.getId})}}">
+					<img src="{{project.getRelativeLinkToImg}}" class="projectImg radius5" title="{{project.getTitle}}">
+				  </a>
+				  <div class="media-body">
+					<h4 class="media-heading"><a href="{{url('project',{id:project.getId})}}">{{project.getTitle}}</a></h4>
+					<div>
+                    <p>
+						{{project.getContent | slice(0,200) | raw | striptags | replace({'&nbsp;':' '})}}
+					</p>
+                    </div>
+					<a class="pull-right" href="{{url('project',{id:project.getId})}}">Подробнее</a>
+				  </div>
+				</div>
+                {% endfor %}
+				{% endif %}	
+				
+			</div>
+			</div>
+		</div>
+		</div>

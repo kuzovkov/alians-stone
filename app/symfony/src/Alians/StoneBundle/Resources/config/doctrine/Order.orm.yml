@@ -1,0 +1,56 @@
+Alians\StoneBundle\Entity\Order:
+    type: entity
+    table: orderr
+    repositoryClass: Alians\StoneBundle\Entity\OrderRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '255'
+            nullable: true
+        email:
+            type: string
+            length: '255'
+            nullable: true
+        phone:
+            type: string
+            length: '255'
+            nullable: true
+        skype:
+            type: string
+            length: '255'
+            nullable: true
+        product:
+            type: string
+            length: '255'
+            nullable: true
+        material:
+            type: string
+            length: '255'
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        answer:
+            type: boolean
+            nullable: true
+        img:
+            type: string
+            length: '255'
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: true
+        updated_at:
+            type: datetime
+            nullable: true
+        
+           
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue, uploadImage ]
+        preUpdate: [ setUpdatedAtValue, uploadImage ]

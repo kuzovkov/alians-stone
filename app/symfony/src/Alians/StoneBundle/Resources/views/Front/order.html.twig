@@ -1,0 +1,108 @@
+{% extends '::base.front.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/front.style.css')}}" type="text/css" media="screen"/>  
+{% endblock %}
+
+{% block content %}
+<hr />
+<div class="wrap-order">
+    <div id="form-error"></div>
+    <form onsubmit="return check();" class="navbar-form" method="post" enctype="multipart/form-data" action="{{url('order')}}" >
+        
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+          <input id="name" type="text" class="form-control" name="name" placeholder="Ваше Имя">
+        </div>
+        <br />
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+          <input id="email" type="email" class="form-control" name="email" placeholder="Email">
+        </div>
+        <br />
+         <div class="input-group">
+          
+          <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+          <input id="phone" type="text" class="form-control" name="phone" placeholder="Телефон">
+        </div>
+        <br />
+         <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-cloud"></span></span>
+          <input type="text" class="form-control" name="skype" placeholder="Skype">
+        </div>
+        <br />
+        <p>
+        <label>Выберите тип изделия</label>
+        <div class="form-group">
+        <select name="product"  class="form-control" style="width: 370px">
+            {% if data.products %}
+            {% for product in data.products %}
+                <option value="{{product.getId}}">{{product.getTitle}}</option>
+            {% endfor %}
+            {% endif %}
+        </select>
+        </div>
+        </p>
+        <p>
+         <label>Выберите материал</label>
+        <select name="material" class="form-control" style="width: 370px">
+            {% if data.materials %}
+            {% for material in data.materials %}
+                <option value="{{material.getSlug}}">{{material.getTitle}}</option>
+            {% endfor %}
+            {% endif %}
+        </select>
+        </p>
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-align-justify"></span></span>
+          <textarea class="form-control" name="description" placeholder="Описание"></textarea>
+        </div>
+        <br /> 
+        <label>Вы можете приложить файл с эскизом <br />(файл с изображением формата jpg, jpeg, 
+png, gif)</label><br/>
+        <div class="input-group">
+         
+          <span class="input-group-addon"><span class="glyphicon glyphicon-paperclip"></span></span>
+          <input type="file" class="form-control" name="img" placeholder="Файл с эскизом">
+        </div>
+        <br />
+       <div class="input-group">
+       
+          <button id="order-btn" style="width: 370px; height: 40px" type="submit"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Отправить</button>
+       </div>
+        
+    </form>
+    
+</div>
+<hr />
+
+{% endblock %}
+
+
+{% block customjs %}
+<script type="text/javascript">
+   
+   //check fill Order form 
+    function check()
+    {
+        var name = $('#name').val();
+        
+        if ( name.length < 2 ) 
+        {
+            $('#form-error').html('<p style="color: #ff4800">Введите имя</p>');
+            return false;
+        }
+        
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        
+        if ( phone.length < 5 && email.length < 3 )
+        {
+             $('#form-error').html('<p style="color: #ff4800">Укажите Email или телефон</p>');
+             return false;
+        } 
+        return true;
+    }
+    
+  
+</script>
+{% endblock %}

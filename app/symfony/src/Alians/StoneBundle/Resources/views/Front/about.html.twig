@@ -1,0 +1,22 @@
+{% extends '::base.front.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('bundles/aliansstone/css/front.style.css')}}" type="text/css" media="screen"/>  
+{% endblock %}
+
+{% block content %}
+<hr />
+<div class="wrap" >
+
+
+       {% if data.settings['about'] is defined %}{{data.settings['about'] | raw}}{% endif %}
+
+</div>
+{% endblock %}
+
+
+{% block customjs %}
+<script type="text/javascript">
+    var nav = document.getElementById('about');
+    nav.className = "active";
+</script>
+{% endblock %}

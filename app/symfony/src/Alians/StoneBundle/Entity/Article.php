@@ -1,0 +1,409 @@
+<?php
+
+namespace Alians\StoneBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+//use Alians\StoneBundle\Helper\Setting;
+use Alians\StoneBundle\Helper\ImgUpload;
+use Alians\StoneBundle\Helper\Strings;
+
+/**
+ * Article
+ */
+class Article
+{
+    
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $content;
+
+    /**
+     * @var string
+     */
+    private $htmlTitle;
+
+    /**
+     * @var string
+     */
+    private $metaKeywords;
+
+    /**
+     * @var string
+     */
+    private $metaDescription;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var string
+     */
+    private $slug;
+
+    /**
+     * @var \DateTime
+     */
+    private $created_at;
+
+    /**
+     * @var \DateTime
+     */
+    private $updated_at;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Article
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Article
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set htmlTitle
+     *
+     * @param string $htmlTitle
+     * @return Article
+     */
+    public function setHtmlTitle($htmlTitle)
+    {
+        $this->htmlTitle = $htmlTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get htmlTitle
+     *
+     * @return string 
+     */
+    public function getHtmlTitle()
+    {
+        return $this->htmlTitle;
+    }
+
+    /**
+     * Set metaKeywords
+     *
+     * @param string $metaKeywords
+     * @return Article
+     */
+    public function setMetaKeywords($metaKeywords)
+    {
+        $this->metaKeywords = $metaKeywords;
+
+        return $this;
+    }
+
+    /**
+     * Get metaKeywords
+     *
+     * @return string 
+     */
+    public function getMetaKeywords()
+    {
+        return $this->metaKeywords;
+    }
+
+    /**
+     * Set metaDescription
+     *
+     * @param string $metaDescription
+     * @return Article
+     */
+    public function setMetaDescription($metaDescription)
+    {
+        $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get metaDescription
+     *
+     * @return string 
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Article
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Article
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param \DateTime $createdAt
+     * @return Article
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set updated_at
+     *
+     * @param \DateTime $updatedAt
+     * @return Article
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updated_at
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        if(!$this->getCreatedAt())
+        {
+            $this->created_at = new \DateTime();
+        }
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTime();
+    }
+    
+    public function __toString()
+    {
+        return $this->getId() ? strval($this->getId()) : '-';
+    }
+    
+    /**
+     *  Name of entity
+     * @return string Entity name
+     **/
+    public function getEntityName()
+    {
+        return 'article';
+    }
+    /**
+     * @var string
+     */
+    private $img;
+
+
+    /**
+     * Set img
+     *
+     * @param string $img
+     * @return Article
+     */
+    public function setImg($img)
+    {
+         if ($img==null) return $this;
+        ImgUpload::deleteImage($this);
+        $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * Get img
+     *
+     * @return string 
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+    
+     public function getImageDir()
+    {
+        return 'articles';
+    } 
+    
+    /**
+     * @var array
+     * sizes of thumbnail
+     */
+    
+    public function getThumbsizes()
+    {
+        return array( 80, 100 , 150 );
+    }
+    
+     /**
+     *  Get link to image
+     * //@return string Link to image or false if fail
+     */
+    
+    public function getLinkToImg()
+    {
+        return ImgUpload::getLinkToImg($this);
+    } //end func   
+       
+    
+    /**
+     *  Get relative link to image
+     * //@return string Link to image or false if fail
+     */
+     
+    public function getRelativeLinkToImg()
+    {
+        return ImgUpload::getRelativeLinkToImg($this);
+    }//end func
+    
+    /**
+     *  Get relative link to Thunbnail
+     * //@return string Link to image or false if fail
+     **/
+    
+    public function getRelativeLinkToThumbnailImg($size)
+    {
+        return ImgUpload::getRelativeLinkToThumbnailImg($this, $size);
+    }//end func
+    
+    
+    /**
+     *  Upload image file from POST request
+     * /@return bool false if fail
+     **/
+    
+    public function uploadImage()
+    {
+        return ImgUpload::uploadImage($this);   
+    }//end func
+    
+    public function checkSlug()
+    {
+        $this->slug = ($this->slug)? $this->slug : Strings::name2slug( $this->title );
+
+        return $this;
+    }
+}

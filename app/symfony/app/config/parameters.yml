@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: mysql
+    database_port: 3306
+    database_name: alians_stone
+    database_user: alians_stone
+    database_password: P@ssw0rd
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: ru
+    secret: 175b86ae22f830d08a8c392389b72d309990c122
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true
